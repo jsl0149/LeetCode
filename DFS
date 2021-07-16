@@ -1,0 +1,27 @@
+ 
+    int sum = 0;
+    
+    int sumOfLeftLeaves(TreeNode* root) {
+        
+       sumkasl(root);
+       
+        return sum;
+        
+    }
+    
+    
+    void sumkasl(TreeNode* root){
+        
+         if(root == NULL){
+             return;
+         }   
+        
+         if(root->left != NULL && (root->left->left == NULL && root->left->right == NULL)){
+            sum += root->left->val;
+         }
+        
+        sumkasl(root->left);
+        sumkasl(root->right);
+        
+    }
+    
