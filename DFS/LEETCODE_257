@@ -1,0 +1,34 @@
+class Solution {
+public:
+    vector<int> aaa;
+    vector<string> ans;
+    vector<string> binaryTreePaths(TreeNode* root) {
+    
+        if(root==NULL){
+            return ans;
+        }
+        
+        aaa.push_back(root->val);
+        
+        if(root->left == NULL && root->right == NULL){
+            string answer = "";
+            for(int i = 0;i<aaa.size();i++){
+                if(i == aaa.size()-1){
+                    answer+=to_string(aaa[i]);
+                }
+                else{
+                    answer+=to_string(aaa[i]);
+                    answer+="->";
+                }
+            }
+            
+            ans.push_back(answer);
+            aaa.pop_back();
+            return ans;
+        }
+        binaryTreePaths(root->left);
+        binaryTreePaths(root->right);
+        aaa.pop_back();
+        return ans;
+    }
+};
